@@ -1,15 +1,25 @@
+#
+# Conditional build:
+%bcond_with	sse2	# use SSE2 instructions (without runtime detection)
+
+%ifarch %{x8664} x32 pentium4
+%define	with_sse2	1
+%endif
 Summary:	Encoding detector library
 Summary(pl.UTF-8):	Biblioteka wykrywająca kodowanie
 Name:		uchardet
 Version:	0.0.7
-Release:	1
+Release:	2
 License:	MPL v1.1
 Group:		Libraries
 Source0:	https://www.freedesktop.org/software/uchardet/releases/%{name}-%{version}.tar.xz
 # Source0-md5:	623406dac5c5ad89e40eedd7f279efae
 URL:		https://www.freedesktop.org/wiki/Software/uchardet/
 BuildRequires:	cmake >= 2.8.5
-BuildRequires:	libstdc++-devel
+BuildRequires:	libstdc++-devel >= 6:4.7
+%if %{with sse2}
+Requires:	cpuinfo(sse2)
+%endif
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -39,7 +49,7 @@ Summary:	Header file for uchardet library
 Summary(pl.UTF-8):	Plik nagłówkowy biblioteki uchardet
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	libstdc++-devel
+Requires:	libstdc++-devel >= 6:4.7
 
 %description devel
 Header file for uchardet library.
@@ -63,7 +73,9 @@ Statyczna biblioteka uchardet.
 %setup -q
 
 %build
-%cmake .
+%cmake . \
+	%{!?with_sse2:-DCHECK_SSE2=OFF}
+
 %{__make}
 
 %install
