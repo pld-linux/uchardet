@@ -8,14 +8,14 @@
 Summary:	Encoding detector library
 Summary(pl.UTF-8):	Biblioteka wykrywająca kodowanie
 Name:		uchardet
-Version:	0.0.7
-Release:	2
+Version:	0.0.8
+Release:	1
 License:	MPL v1.1
 Group:		Libraries
 Source0:	https://www.freedesktop.org/software/uchardet/releases/%{name}-%{version}.tar.xz
-# Source0-md5:	623406dac5c5ad89e40eedd7f279efae
+# Source0-md5:	9e267be7aee81417e5875086dd9d44fd
 URL:		https://www.freedesktop.org/wiki/Software/uchardet/
-BuildRequires:	cmake >= 2.8.5
+BuildRequires:	cmake >= 3.1
 BuildRequires:	libstdc++-devel >= 6:4.7
 BuildRequires:	rpmbuild(macros) >= 2.007
 BuildRequires:	tar >= 1:1.22
@@ -106,6 +106,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libuchardet.so
 %{_includedir}/uchardet
 %{_pkgconfigdir}/uchardet.pc
+%{_libdir}/cmake/uchardet
 
 %files static
 %defattr(644,root,root,755)
