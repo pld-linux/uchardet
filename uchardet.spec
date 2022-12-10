@@ -2,7 +2,7 @@
 # Conditional build:
 %bcond_with	sse2	# use SSE2 instructions (without runtime detection)
 
-%ifarch %{x8664} x32 pentium4
+%ifarch %{x86_with_sse2}
 %define	with_sse2	1
 %endif
 Summary:	Encoding detector library
@@ -17,6 +17,7 @@ Source0:	https://www.freedesktop.org/software/uchardet/releases/%{name}-%{versio
 URL:		https://www.freedesktop.org/wiki/Software/uchardet/
 BuildRequires:	cmake >= 2.8.5
 BuildRequires:	libstdc++-devel >= 6:4.7
+BuildRequires:	rpmbuild(macros) >= 2.007
 %if %{with sse2}
 Requires:	cpuinfo(sse2)
 %endif
