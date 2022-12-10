@@ -18,6 +18,8 @@ URL:		https://www.freedesktop.org/wiki/Software/uchardet/
 BuildRequires:	cmake >= 2.8.5
 BuildRequires:	libstdc++-devel >= 6:4.7
 BuildRequires:	rpmbuild(macros) >= 2.007
+BuildRequires:	tar >= 1:1.22
+BuildRequires:	xz
 %if %{with sse2}
 Requires:	cpuinfo(sse2)
 %endif
