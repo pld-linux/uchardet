@@ -15,7 +15,7 @@ Group:		Libraries
 Source0:	https://www.freedesktop.org/software/uchardet/releases/%{name}-%{version}.tar.xz
 # Source0-md5:	9e267be7aee81417e5875086dd9d44fd
 URL:		https://www.freedesktop.org/wiki/Software/uchardet/
-BuildRequires:	cmake >= 3.1
+BuildRequires:	cmake >= 3.13
 BuildRequires:	libstdc++-devel >= 6:4.7
 BuildRequires:	rpmbuild(macros) >= 2.007
 BuildRequires:	tar >= 1:1.22
